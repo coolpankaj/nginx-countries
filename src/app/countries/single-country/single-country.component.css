@@ -1,0 +1,36 @@
+*{
+  background-color: #378190;
+}
+#flag {
+  height: 150px !important;
+  width: 300px !important;
+}
+.borderless td, .borderless th {
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.mybox {
+  padding-bottom: 40px !important;
+}
+#myimage {
+  height: 20vh !important;
+  width: 10vw !important;
+  background-color: transparent;
+  overflow: hidden;
+}
+#panel {
+  border: 1px solid white !important;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.back {
+  transition: all 0.3s ease-in-out 0s;
+}
+.back :hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+  transition: all 0.3s ease-in-out 0s;
+}

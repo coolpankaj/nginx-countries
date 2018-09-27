@@ -1,0 +1,73 @@
+<ngx-spinner></ngx-spinner>
+<div class="container-full" >
+
+  <div id="main">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" style="font-size:20px;position: fixed;z-index: 2;" (click) = "hidedata()">
+              <img src="assets/images/earth.png" height="40px;" width="40px;" > Country</a>
+          </li>
+        </ul>
+
+        <div class="text-center text-white" style="margin-top: 25vh;">
+          <h1 class="font-weight-bold">Countries Information On Your Hand.</h1>
+          <br>
+          <h5 style="font-weight: normal;">This site gives information about different countries across the world. Information used on this website is taken from
+            REST api.</h5>
+          <br>
+          <br>
+          <button class="btn btn-primary" (click)= "showdata()">Let's Go</button>
+        </div>
+
+      </div>
+      <!-------------------------------------------------------------------------------------------------------------------->
+
+
+
+       <div id="result">
+         <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" style="font-size:20px;position: fixed;z-index: 2" (click) = "hidedata()">
+              <img src="assets/images/earth.png" height="40px;" width="40px;" > Country</a>
+          </li>
+        </ul>
+          <div class="col-md-8 offset-md-2 text text-center text-white" >
+              <h2 style=" text-shadow: 0 0 3px #FF0000;font-size: 3rem;letter-spacing: 3px;color: #275188">All Regions</h2><br>
+
+            <p class="text-center text-white" style="font-size: 20px;">
+                Interesting Facts About World’s Different Countries.
+
+                Interesting Facts About World’s Different Countries.
+
+                The world is very big and indeed a crazy place with the superabundance of different people, places, and things.
+
+                As we all know that each country has its own particular traits and mannerisms that people grasp proudly and these are the things that tot up a dash of savior to life.
+
+                So here are some random fascinating and interesting facts about some continents and countries around the world that for sure, you will find surprising.
+              </p>
+      </div><br><br>
+
+        <div class="col-md-12">
+         <div class="row">
+         <div class="col-md-4" *ngFor = "let current of regions" style="padding-bottom: 30px !important;">
+          <div class="card text-center mx-auto d-block"  style="width: 18rem;">
+            <img class="card-img-top" style="height: 150px !important;" src="{{current.img}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title text-center"><b>{{current.name}}</b></h5>
+              <p class="card-text text-center">Number Of Countries: {{current.numberofcountries}}</p>
+              <a [routerLink]="['countryview', current.name]" class="btn btn-primary">Countries</a>
+            </div>
+          
+         </div>
+         </div>
+         </div>
+      </div>
+
+
+       </div>
+
+
+</div>
+
+
+

@@ -1,0 +1,140 @@
+<ngx-spinner></ngx-spinner>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-11 offset-md-1" style="text-align: left;">
+      <br>
+      <div class="col-md-1 back">
+          <img  src='assets/images/leftarrow.png' alt="back-button" height="30px" width="30px;" (click) = "goback()">
+       </div>
+      <br>
+    </div>
+  </div>
+
+        <div *ngIf = "data" class="text-truncate">
+            <div class="row" *ngFor = "let current of data" style="padding-bottom: 50px !important;">
+                <div class="col-md-4 offset-md-4 text-center" style="padding-bottom: 40px;">
+                  <img class="img-fluid" src="{{current.flag}}" alt="country-flag" id = "flag">
+                </div>
+                <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1">
+                    <div class="table-responsive">
+                       <table class="table borderless  text-white font-weight-bold text-monospace">
+                           <thead>
+                             <tr *ngIf = "current.name">
+                               <th>Country</th>
+                               <th>{{current.name}}</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <tr *ngIf = "current.capital" >
+                               <td>Capital</td>
+                               <td>{{current.capital}}</td>
+                             </tr>
+                             <tr *ngIf = "current.region" >
+                               <td>Region</td>
+                               <td>{{current.region}}</td>
+                             </tr>
+                             <tr  *ngIf = "current.languages && current.languages.length !== undefined && current.languages.length >0">
+                               <td>Languages</td>
+                               <td><span *ngFor = "let currentLanguage of current.languages; let first = first; let last = last;">{{currentLanguage.name}}{{last?'':', '}}</span></td>
+                             </tr>
+                             <tr  *ngIf = "current.currencies && current.currencies.length !== undefined && current.currencies.length >0">
+                                <td>Currencies</td>
+                                <td><span  *ngFor = "let currentCurrency of current.currencies; let first = first; let last = last;">{{currentCurrency.name}}{{last?'':', '}}</span></td>
+                              </tr>
+                              <tr  *ngIf = "current.demonym">
+                                  <td>Demonym</td>
+                                  <td>{{current.demonym}}</td>
+                                </tr>
+                                <tr  *ngIf = "current.timezones">
+                                    <td>Timezone</td>
+                                    <td>{{current.timezones}}</td>
+                                  </tr>
+                           </tbody>
+                         </table>
+                    </div>
+                 </div>
+
+             
+                <div class="col-md-10 offset-md-1">
+                  <div class="row">
+                      <div class="col-md-3 mybox col-sm-12" *ngIf="current.population">
+                          <div class="col-md-12 col-sm-10 mx-auto d-block  card text-center text-white text-monospace bg-secondary" style="border: 1px solid white;"><br>
+                            <img class="rounded-circle img-fluid card-img-top mx-auto d-block" src="assets/images/population.png" alt="Card image cap" id="myimage">
+                            <div class="card-body bg-secondary">
+                              <h5 class="card-title bg-secondary">Population</h5></div>
+                              <div class="card-footer bottom bg-secondary">{{current.population}}</div>
+
+                          </div>
+                      </div>
+                      <div class="col-md-3 mybox col-sm-12" *ngIf="current.area">
+                          <div class="col-md-12 col-sm-10 mx-auto d-block  card bg-secondary text-center text-white text-monospace" style="border: 1px solid white;"><br>
+                            <img class="rounded-circle img-fluid card-img-top mx-auto d-block" src="assets/images/land.jpg" alt="Card image cap" id="myimage">
+                            <div class="card-body bg-secondary">
+                              <h5 class="card-title bg-secondary">Area</h5></div>
+                              <div class="card-footer bottom bg-secondary">{{current.area}}</div>
+
+                          </div>
+                      </div>
+
+                      <div class="col-md-3 mybox col-sm-12" *ngIf="current.latlng">
+                          <div class="col-md-12 col-sm-10 mx-auto d-block  card bg-secondary text-center text-white text-monospace" style="border: 1px solid white;"><br>
+                            <img class="rounded-circle img-fluid card-img-top mx-auto d-block" src="assets/images/cordinates.gif" alt="Card image cap" id="myimage">
+                            <div class="card-body bg-secondary">
+                              <h5 class="card-title bg-secondary">Cordinates</h5></div>
+                              <div class="card-footer bottom bg-secondary">{{current.latlng}}</div>
+
+                          </div>
+                      </div>
+
+                      <div class="col-md-3 mybox col-sm-12" *ngIf="current.callingCodes">
+                          <div class="col-md-12 col-sm-10 mx-auto d-block  card bg-secondary text-center text-white text-monospace" style="border: 1px solid white;"><br>
+                            <img class="rounded-circle img-fluid card-img-top mx-auto d-block" src="assets/images/call.jpg" alt="Card image cap" id="myimage">
+                            <div class="card-body bg-secondary">
+                              <h5 class="card-title bg-secondary">Calling</h5></div>
+                              <div *ngIf="current.callingCodes.length!=undefined && current.callingCodes.length>0" class="card-footer bottom bg-secondary">
+                                <span class="bg-secondary" *ngFor="let callingCode of current.callingCodes; let first=first; let last=last">
+                                  {{callingCode}}{{last ? '' : ','}}
+                              </span></div>
+
+                          </div>
+                      </div>
+
+                  </div>
+
+
+                </div>
+             
+                <div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 text-truncate">
+                  <div class="row">
+                    <div class="col-md-10 offset-md-1 text-white text-center text-monospace font-weight-bold rounded-top border" >
+                      <span style="font-size: 20px;">Other Details</span>
+                    </div>
+                    <div class="col-md-10 offset-md-1 text-white border rounded-bottom border-top-0">
+                      <div class="row">
+                          <div class="col-md-4" *ngIf="current.subregion"><br>
+                            <h5><b>Subregion: </b><span> {{current.subregion}}</span></h5>
+                        </div>
+                        <div class="col-md-4" *ngIf="current.alpha2Code"><br>
+                          <h5><b>Alpha-2 Code: </b><span> {{current.alpha2Code}}</span></h5>
+                      </div>
+                      <div class="col-md-4" *ngIf="current.alpha3Code"><br>
+                        <h5><b>Alpha-3 Code: </b><span> {{current.alpha3Code}}</span></h5>
+                    </div>
+                    <div class="col-md-4" *ngIf="current.gini"><br>
+                      <h5><b>Gini: </b><span> {{current.gini}}</span></h5>
+                  </div>
+                  <div class="col-md-4" *ngIf="current.numericCode"><br>
+                    <h5><b>Numeric Code: </b><span> {{current.numericCode}}</span></h5>
+                </div>
+                <div class="col-md-4" *ngIf="current.cioc"><br>
+                  <h5><b>Cioc: </b><span> {{current.cioc}}</span></h5>
+              </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+
+</div>

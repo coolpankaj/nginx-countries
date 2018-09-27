@@ -1,0 +1,28 @@
+#special{
+background: url('https://images.pexels.com/photos/220201/pexels-photo-220201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+background-attachment: fixed;
+
+ 
+height: 100vh !important;
+width: 100vw !important;
+overflow-x: hidden;
+overflow-y: scroll;
+
+}
+
+.back {
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .back :hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  a :hover {
+    color: rgb(119, 143, 119) !important;
+    cursor: pointer;
+  }

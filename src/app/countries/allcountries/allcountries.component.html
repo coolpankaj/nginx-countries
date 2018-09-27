@@ -1,0 +1,45 @@
+<ngx-spinner></ngx-spinner>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" style="text-align: left;">
+        <br>
+       <div class="col-md-1 back">
+          <img  src='assets/images/leftarrow.png' alt="back-button" height="30px" width="30px;" (click) = "goback()">
+       </div>
+        <br><br>
+        <p class="col-md-12 text-white font-weight-bold text-monospace">Click on language/currency to filter</p>
+      </div>
+      <div class="col-md-12" *ngIf = "selectedRegion"><p class="text text-center font-weight-bold text-center text-monospace text-white" style="font-size: 20px;">Region {{selectedRegion}}</p></div>
+    </div>
+
+<div class="col-md-12">
+  <div class="row" *ngIf="data">
+
+    <div class="col-md-3 col-sm-6" *ngFor="let current of data" style="padding-bottom: 25px;overflow: hidden;">
+        <div>
+            <div class="col-md-12 col-sm-12 card text-center" style="width: 18rem;background-color: #8A8A9E;">
+                <img class="card-img-top" src="{{current.flag}}" alt="Card image cap" style="height: 150px !important;">
+                <div class="card-body text-white">
+                  <h5 class="card-title font-weight-bold border-bottom text-truncate" style="padding-bottom: 0.5rem;font-size: 25px;">{{current.name}}</h5>
+                  <p class="card-text text-truncate"><b>Capital:</b> {{current.capital}}</p>
+
+                  <p class="card-text text-truncate" *ngIf="current.languages && current.languages.length !== undefined && current.languages.length > 0">
+                    <b>Languages: </b>
+                    <a   *ngFor="let language of current.languages; let first=first; let last=last" [routerLink] = "['/languagefilter', language.name]">{{language.name}}{{last? '':', '}}</a>
+                  </p>
+
+                  <p class="card-text text-truncate" *ngIf="current.currencies && current.currencies.length !== undefined && current.currencies.length > 0">
+                      <b>Currencies: </b>
+                      <a  *ngFor="let currency of current.currencies; let first=first; let last=last" [routerLink]= "['/currencyfilter/' + currency.name]">{{currency.name}}{{last? '':', '}}</a>
+                  </p>
+                 
+                  <hr>
+                  <a class="btn btn-info" [routerLink] = "['/singlecountry', current.name]">Get More</a>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+</div>
